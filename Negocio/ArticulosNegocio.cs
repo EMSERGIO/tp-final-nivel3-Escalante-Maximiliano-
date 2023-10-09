@@ -20,7 +20,7 @@ namespace Negocio
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "Select Codigo, Nombre,A.Descripcion as Detalle, ImagenUrl as UrlImagen, Precio , C.Descripcion as Categoria, M.Descripcion as Marcas, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A,CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca";
                 comando.Connection = conexion;
@@ -57,11 +57,48 @@ namespace Negocio
                 throw ex;
             }
         }
+        public List<Articulos> listarConSP()
+        {
+            List<Articulos> lista = new List<Articulos>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("storedListar");
+                datos.ejecutarLectura();
+                while (datos.lector.Read())
+                {
+                    Articulos aux = new Articulos();
+
+                    aux.Id = (int)datos.lector["Id"];
+                    aux.Codigo = (string)datos.lector["Codigo"];
+                    aux.Nombre = (string)datos.lector["Nombre"];
+                    aux.Descripcion = (string)datos.lector["Detalle"];
+                    aux.UrlImagen = (string)datos.lector["UrlImagen"];
+                    aux.Precio = (float)(Decimal)datos.lector["Precio"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)datos.lector["Categoria"];
+                    aux.Marcas = new Marcas();
+                    aux.Marcas.Id = (int)datos.lector["IdMarca"];
+                    aux.Marcas.Descripcion = (string)datos.lector["Marcas"];
+
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public void agregar(Articulos nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
-             try
-             {
+            try
+            {
                 datos.setearConsulta("Insert Into Articulos (Codigo, Nombre, Descripcion, ImagenUrl, Precio, IdMarca, IdCategoria) values (@Codigo, @Nombre, @Descripcion, @ImagenUrl, @Precio, @IdMarca, @IdCategoria)");
                 datos.setearParametro("@Codigo", nuevo.Codigo);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
@@ -72,16 +109,16 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
 
                 datos.ejecutarAccion();
-             }
-             catch (Exception ex)
-             {
+            }
+            catch (Exception ex)
+            {
 
                 throw ex;
-             }
+            }
             finally
             {
                 datos.cerrarConexion();
-            }  
+            }
         }
         public void modificar(Articulos modificar)
         {
@@ -105,10 +142,10 @@ namespace Negocio
 
                 throw ex;
             }
-            finally { datos.cerrarConexion();}
+            finally { datos.cerrarConexion(); }
 
         }
-        public void eliminar (int id)
+        public void eliminar(int id)
         {
             try
             {
@@ -151,7 +188,7 @@ namespace Negocio
                         switch (criterio)
                         {
                             case "Comienza con":
-                                consulta += "Nombre like '" + filtro +"%'";
+                                consulta += "Nombre like '" + filtro + "%'";
                                 break;
                             case "Termina con":
                                 consulta += "Nombre like '%" + filtro + "'";
@@ -249,10 +286,6 @@ namespace Negocio
                 throw ex;
             }
         }
-        public void verDetalle(Articulos detalle)
-        {
-        }
-
-    }
-    
+        public void verDetalle(Articulos detalle){ }
+    }    
 }
