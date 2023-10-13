@@ -120,6 +120,32 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void agregarConSP(Articulos nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("storedAltaArticulos");
+                datos.setearParametro("@Codigo", nuevo.Codigo);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
+                datos.setearParametro("@ImagenUrl", nuevo.UrlImagen);
+                datos.setearParametro("@Precio", nuevo.Precio);
+                datos.setearParametro("@IdMarca", nuevo.Marcas.Id);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void modificar(Articulos modificar)
         {
             AccesoDatos datos = new AccesoDatos();

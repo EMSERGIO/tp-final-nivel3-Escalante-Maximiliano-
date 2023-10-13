@@ -9,7 +9,11 @@
     <asp:ScriptManager runat="server" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <asp:GridView ID="dgvArticulos" runat="server" CssClass="table table-info" AutoGenerateColumns="false">
+             <asp:GridView ID="dgvArticulos" runat="server" DataKeyNames="Id"
+                CssClass="table" AutoGenerateColumns="false"
+                OnSelectedIndexChanged="dgvDiscos_SelectedIndexChanged"
+                OnPageIndexChanging="dgvDiscos_PageIndexChanging"
+                AllowPaging="true" PageSize="6">
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Código" DataField="Codigo" />
@@ -20,6 +24,6 @@
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <a href="..." class="btn btn-primary">Agregar</a>
+    <a href="FormularioArticulos.aspx" class="btn btn-primary">Agregar</a>
 
 </asp:Content>

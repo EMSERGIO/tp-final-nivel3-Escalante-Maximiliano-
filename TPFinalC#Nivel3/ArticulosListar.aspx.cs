@@ -17,5 +17,17 @@ namespace TPFinalC_Nivel3
             dgvArticulos.DataSource = negocio.listarConSP();
             dgvArticulos.DataBind();
         }
+
+        protected void dgvDiscos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvArticulos.PageIndex = e.NewPageIndex;
+            dgvArticulos.DataBind();
+        }
+        protected void dgvDiscos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioArticulos.aspx?id=" + id);
+        }
+
     }
 }
