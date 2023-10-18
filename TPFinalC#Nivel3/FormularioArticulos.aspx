@@ -16,11 +16,11 @@
             </div>
             <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre:</label>
-                <asp:TextBox runat="server" TextMode="DateTime" ID="txtNombre" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
             </div>
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio:</label>
-                <asp:TextBox runat="server" TextMode="Number" ID="txtPrecio" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
             </div>
             <div class="mb-3">
                 <label for="ddlMarcas" class="form-label">Marca:</label>
@@ -42,7 +42,7 @@
             </div>
             <asp:ScriptManager runat="server" />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <contenttemplate>
+                <ContentTemplate>
                     <div class="mb-3">
                         <label for="txtUrlImagen" class="form-label">Url Imagen:</label>
                         <asp:TextBox runat="server" ID="txtUrlImagen" CssClass="form-control"
@@ -50,10 +50,25 @@
                     </div>
                     <asp:Image ImageUrl="http://img2.wikia.nocookie.net/__cb20140518072131/towerofsaviors/images/4/47/Placeholder.png"
                         runat="server" ID="imgArticulos" Width="80%" />
-                </contenttemplate>
+                </ContentTemplate>
             </asp:UpdatePanel>
         </div>
     </div>
-
-
+    <div class="row">
+        <div class="col-6">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <asp:Button Text="Eliminar" ID="btnElminar" CssClass="btn btn-danger" OnClick="btnElminar_Click" runat="server" />
+                    </div>
+                    </div>
+                <%if (ConfirmaEliminacion){%>
+                    <div class="mb-3">
+                        <asp:CheckBox Text="Confirmar Eliminacio" ID="chkConfirmarEliminacion" runat="server" />
+                        <asp:Button Text="Eliminar" ID="btnConfirmaEliminar" Onclick="btnConfirmaEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
+                    </div>
+                <%} %>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
 </asp:Content>

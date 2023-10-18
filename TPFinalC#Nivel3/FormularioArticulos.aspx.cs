@@ -11,9 +11,11 @@ namespace TPFinalC_Nivel3
 {
     public partial class FormularioArticulos : System.Web.UI.Page
     {
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            ConfirmaEliminacion = false;
             try
             {
 
@@ -35,6 +37,23 @@ namespace TPFinalC_Nivel3
                     ddlCategoria.DataBind();
 
                 }
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if(id != "" && !IsPostBack)
+                {
+                    ArticulosNegocio negocio = new ArticulosNegocio();
+                    Articulos seleccionado = (negocio.listar(id)[0]);
+
+                    txtId.Text = id;
+                    txtCodigo.Text = seleccionado.Codigo;
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    txtUrlImagen.Text = seleccionado.UrlImagen;
+                    txtPrecio.Text = seleccionado.Precio.ToString();
+                    ddlMarcas.SelectedValue = seleccionado.Marcas.Id.ToString();
+                    ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+                    txtUrlImagen_TextChanged(sender, e);
+
+                }
             }
             catch (Exception ex)
             {
@@ -53,16 +72,23 @@ namespace TPFinalC_Nivel3
 
                 nuevo.Codigo = txtCodigo.Text;
                 nuevo.Nombre = txtNombre.Text;
-                nuevo.Precio = int.Parse(txtPrecio.Text);
                 nuevo.Descripcion = txtDescripcion.Text;
                 nuevo.UrlImagen = txtUrlImagen.Text;
+                nuevo.Precio = int.Parse(txtPrecio.Text.ToString());
 
                 nuevo.Marcas = new Marcas();
                 nuevo.Marcas.Id = int.Parse(ddlMarcas.SelectedValue);
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificarConSP(nuevo);
+                }
+                else
+                     negocio.agregarConSP(nuevo);
 
-                negocio.agregar(nuevo);
+
                 Response.Redirect("ArticulosListar.aspx", false);
 
             }
@@ -76,6 +102,30 @@ namespace TPFinalC_Nivel3
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             imgArticulos.ImageUrl = txtUrlImagen.Text;
+        }
+
+        protected void btnElminar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true;
+        }
+
+        protected void btnConfirmaEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(chkConfirmarEliminacion.Checked)
+                {
+                    ArticulosNegocio negocio = new ArticulosNegocio();
+                    negocio.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("ArticulosListar.aspx");
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
     }
 }

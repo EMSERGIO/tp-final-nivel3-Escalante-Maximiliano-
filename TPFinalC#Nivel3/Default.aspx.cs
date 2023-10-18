@@ -23,9 +23,17 @@ namespace TPFinalC_Nivel3
             }
         }
 
-        protected void Unnamed_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Detalle.aspx", false);
-        }
+        //protected void Unnamed_Click(object sender, EventArgs e)
+        //{
+        //    string id = SelectedDataKey.Value.ToString();
+        //    Response.Redirect("FormularioArticulos.aspx?id=" + id);
+        //    Response.Redirect("Detalle.aspx", false);
+        //}
+
+        //protected void verDetalle_Click(object sender, EventArgs e)
+        //{
+        //    string id = verDetalle.SelectedDateKey.ToString();
+        //    Response.Redirect("Detalle.aspx?id=" + id);
+        //}
     }
 }

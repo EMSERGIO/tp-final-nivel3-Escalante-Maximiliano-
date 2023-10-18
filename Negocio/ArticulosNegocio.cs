@@ -11,7 +11,7 @@ namespace Negocio
 {
     public class ArticulosNegocio
     {
-        public List<Articulos> listar()
+        public List<Articulos> listar(string id = "")
         {
             List<Articulos> lista = new List<Articulos>();
             SqlConnection conexion = new SqlConnection();
@@ -22,7 +22,9 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Codigo, Nombre,A.Descripcion as Detalle, ImagenUrl as UrlImagen, Precio , C.Descripcion as Categoria, M.Descripcion as Marcas, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A,CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca";
+                comando.CommandText = "Select Codigo, Nombre,A.Descripcion as Detalle, ImagenUrl as UrlImagen, Precio , C.Descripcion as Categoria, M.Descripcion as Marcas, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A,CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca ";
+                if (id != "")
+                    comando.CommandText += " and A.id = " + id;
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -94,32 +96,6 @@ namespace Negocio
                 throw ex;
             }
         }
-        public void agregar(Articulos nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearConsulta("Insert Into Articulos (Codigo, Nombre, Descripcion, ImagenUrl, Precio, IdMarca, IdCategoria) values (@Codigo, @Nombre, @Descripcion, @ImagenUrl, @Precio, @IdMarca, @IdCategoria)");
-                datos.setearParametro("@Codigo", nuevo.Codigo);
-                datos.setearParametro("@Nombre", nuevo.Nombre);
-                datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@ImagenUrl", nuevo.UrlImagen);
-                datos.setearParametro("@Precio", nuevo.Precio);
-                datos.setearParametro("@IdMarca", nuevo.Marcas.Id);
-                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
-
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
         public void agregarConSP(Articulos nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -129,10 +105,10 @@ namespace Negocio
                 datos.setearParametro("@Codigo", nuevo.Codigo);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@ImagenUrl", nuevo.UrlImagen);
-                datos.setearParametro("@Precio", nuevo.Precio);
                 datos.setearParametro("@IdMarca", nuevo.Marcas.Id);
                 datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                datos.setearParametro("@ImagenUrl", nuevo.UrlImagen);
+                datos.setearParametro("@Precio", nuevo.Precio);
 
                 datos.ejecutarAccion();
             }
@@ -146,19 +122,19 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void modificar(Articulos modificar)
+        public void modificarConSP(Articulos modificar)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @UrlImagen, Precio = @precio where Id = @id");
-                datos.setearParametro("@codigo", modificar.Codigo);
-                datos.setearParametro("@nombre", modificar.Nombre);
-                datos.setearParametro("@descripcion", modificar.Descripcion);
-                datos.setearParametro("@idMarca", modificar.Marcas.Id);
-                datos.setearParametro("@idCategoria", modificar.Categoria.Id);
+                datos.setearProcedimiento("storedModificarArticulos");
+                datos.setearParametro("@Codigo", modificar.Codigo);
+                datos.setearParametro("@Nombre", modificar.Nombre);
+                datos.setearParametro("@Descripcion", modificar.Descripcion);
+                datos.setearParametro("@IdMarca", modificar.Marcas.Id);
+                datos.setearParametro("@IdCategoria", modificar.Categoria.Id);
                 datos.setearParametro("@UrlImagen", modificar.UrlImagen);
-                datos.setearParametro("@precio", modificar.Precio);
+                datos.setearParametro("@Precio", modificar.Precio);
                 datos.setearParametro("@id", modificar.Id);
 
                 datos.ejecutarAccion();

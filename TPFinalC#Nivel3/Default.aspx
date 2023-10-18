@@ -20,7 +20,7 @@
                         <div class="card-footer">
                             <div class="text-center">
                                 <div class="cols-md-3">
-                                    <asp:Button Text="Ver Detalle" class="btn btn-primary" runat="server" OnClick="Unnamed_Click" />
+                                    <asp:Button Text="Ver Detalle" class="btn btn-primary" runat="server" />
                                     <asp:Button Text="Comprar" class="btn btn-danger" runat="server" />
                                 </div>
                             </div>
