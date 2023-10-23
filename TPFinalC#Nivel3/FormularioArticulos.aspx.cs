@@ -35,6 +35,7 @@ namespace TPFinalC_Nivel3
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataBind();
+                    btnElminar.Enabled = false;
 
                 }
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
@@ -52,6 +53,7 @@ namespace TPFinalC_Nivel3
                     ddlMarcas.SelectedValue = seleccionado.Marcas.Id.ToString();
                     ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
                     txtUrlImagen_TextChanged(sender, e);
+                    btnElminar.Enabled = true;
 
                 }
             }

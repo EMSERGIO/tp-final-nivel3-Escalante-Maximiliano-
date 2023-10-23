@@ -13,8 +13,17 @@ namespace TPFinalC_Nivel3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //string id = Request.QueryString["id"];
+            //if (id == null && !IsPostBack)
+            //{
+            //    ArticulosNegocio negocio = new ArticulosNegocio();
+            //    Articulos seleccionado = (negocio.listar(id)[0]);
 
-            
+
+            //    txtNombre.Text = seleccionado.Nombre;
+            //    txtDescripcion.Text = seleccionado.Descripcion;
+            //    txtPrecio.Text = seleccionado.Precio.ToString();
+            //}
         }
     }
 }

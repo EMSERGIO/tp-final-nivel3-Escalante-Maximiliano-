@@ -18,7 +18,7 @@ namespace TPFinalC_Nivel3
             if (!IsPostBack)
             {
                 ArticulosNegocio negocio = new ArticulosNegocio();
-                dgvArticulos.DataSource = negocio.listarConSP();
+                Session.Add("listaArticulos", negocio.listarConSP());
                 dgvArticulos.DataSource = Session["listaArticulos"];
                 dgvArticulos.DataBind();
             }

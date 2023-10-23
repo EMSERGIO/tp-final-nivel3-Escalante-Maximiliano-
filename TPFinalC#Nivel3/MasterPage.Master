@@ -25,8 +25,17 @@
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                             <a class="nav-link" href="ArticulosListar.aspx">Listado de Articulos</a>
+                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
+                            <a class="nav-link" href="#">Mi Perfil</a>
                         </div>
                     </div>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="Login.aspx" class="btn btn-success me-2">Login</a>
+                    <a href="Registro.aspx" class="btn btn-outline-primary">Registrarse</a>
+                    <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" />
+                    <asp:Image ImageUrl="https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png"
+                        ID="imgPerfil" Style="height: 40px; width: 40px; border-radius: 50%;" runat="server" />
                 </div>
             </nav>
 
