@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,7 +24,7 @@ namespace TPFinalC_Nivel3
                 //devolver la raiz o ruta fisica de la carpeta de imagenes y guardar el archivo, agregando el ID del ususario..
                 ClienteNegocio negocio = new ClienteNegocio();
                 string ruta = Server.MapPath("./Images/");
-                Cliente user = (Cliente)Session["musicoFans"];
+                Cliente user = (Cliente)Session["cliente"];
                 txtImagen.PostedFile.SaveAs(ruta + "perfil-" + user.Id + ".jpg");
 
                 //guardar los datos de la imagen para el perfil de la persona que corresponda...

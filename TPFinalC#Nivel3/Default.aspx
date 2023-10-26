@@ -7,7 +7,7 @@
     <h1>Hola</h1>
     <p>LLegaste a buscar tu articulo?</p>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <asp:Repeater runat="server" ID="repRepetidor" >
+        <asp:Repeater runat="server" ID="repRepetidor">
             <ItemTemplate>
                 <div class="col">
                     <div class="card h-100">
@@ -20,8 +20,9 @@
                         <div class="card-footer">
                             <div class="text-center">
                                 <div class="cols-md-3">
-                                    <asp:Button Text="Ver Detalle" class="btn btn-primary" ID="btnDetalle" OnClick="btnDetalle_Click"  runat="server" />
-                                    <asp:Button Text="Comprar" class="btn btn-danger" runat="server"  />
+                                    <a href="Detalle.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">Ver Detalle</a>
+                                    <asp:Button Text="Comprar" class="btn btn-danger" runat="server" />
+                                    <a href="Favoritos.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">❤️</a>
                                 </div>
                             </div>
                         </div>

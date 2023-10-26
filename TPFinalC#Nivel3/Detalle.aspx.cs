@@ -13,17 +13,29 @@ namespace TPFinalC_Nivel3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string id = Request.QueryString["id"];
-            //if (id == null && !IsPostBack)
-            //{
-            //    ArticulosNegocio negocio = new ArticulosNegocio();
-            //    Articulos seleccionado = (negocio.listar(id)[0]);
 
+            txtNombre.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtPrecio.Enabled = false;
+            string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+            if (id != "" && !IsPostBack)
+            {
+                ArticulosNegocio negocio = new ArticulosNegocio();
+                Articulos seleccionado = (negocio.listar(id)[0]);
 
-            //    txtNombre.Text = seleccionado.Nombre;
-            //    txtDescripcion.Text = seleccionado.Descripcion;
-            //    txtPrecio.Text = seleccionado.Precio.ToString();
-            //}
+                txtUrlImagen.Text = seleccionado.UrlImagen;
+                txtUrlImagen_TextChanged(sender, e);
+                txtNombre.Text = seleccionado.Nombre;
+                txtDescripcion.Text = seleccionado.Descripcion;
+                txtPrecio.Text = seleccionado.Precio.ToString();
+
+            }
+        }
+
+        protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
+        {
+            imgArticulos.ImageUrl = txtUrlImagen.Text;
         }
     }
+    
 }

@@ -22,10 +22,5 @@ namespace TPFinalC_Nivel3
                 repRepetidor.DataBind();
             }
         }
-
-        protected void btnDetalle_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

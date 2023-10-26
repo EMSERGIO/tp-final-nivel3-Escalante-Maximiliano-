@@ -289,5 +289,10 @@ namespace Negocio
             }
         }
         public void verDetalle(Articulos detalle){ }
+
+        public void listarConSP(Articulos articulos)
+        {
+            throw new NotImplementedException();
+        }
     }    
 }

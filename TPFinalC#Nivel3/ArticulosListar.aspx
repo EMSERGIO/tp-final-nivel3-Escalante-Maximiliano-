@@ -79,7 +79,7 @@
                     <asp:BoundField HeaderText="Código" DataField="Codigo" />
                     <asp:BoundField HeaderText="Precio" DataField="Precio" />
                     <asp:BoundField HeaderText="Marca" DataField="Marcas.Descripcion" />
-                    <asp:CommandField HeaderText="Accion" ShowSelectButton="true" SelectText="📝" />
+                    <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="✍️" />
                 </Columns>
             </asp:GridView>
         </ContentTemplate>
