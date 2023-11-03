@@ -18,10 +18,6 @@
                 <label class="form-label">Apellido</label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtApellido" />
             </div>
-            <div class="mb-3">
-                <label class="form-label">Fecha de Nacimiento</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtFechaNacimiento" />
-            </div>
         </div>
 
         <div class="col-4">
@@ -30,7 +26,7 @@
                 <input type="file" id="txtImagen" runat="server" class="form-control" />
             </div>
             <asp:Image ImageUrl="https://img2.freepng.es/20180603/jx/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1b19d70.1261504615280626897275.jpg"
-                runat="server" ID="imgNuevoPerfil" Width="100%" />
+                runat="server" ID="imgNuevoPerfil" cssclass="img-fluid mb-3"/>
         </div>
     </div>
 

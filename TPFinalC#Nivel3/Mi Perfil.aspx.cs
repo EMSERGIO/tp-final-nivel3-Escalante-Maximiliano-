@@ -14,6 +14,19 @@ namespace TPFinalC_Nivel3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Seguridad.sessionActiva(Session["cliente"]))
+                {
+                    Cliente user = (Cliente)Session["cliente"];
+                    txtEmail.Text = user.Email;
+                    txtEmail.Enabled = false;
+                    txtApellido.Text = user.Apellido;
+                    txtNombre.Text = user.Nombre;
+                    if(!string.IsNullOrEmpty(user.ImagenPerfil))
+                        imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                }
+            }
 
         }
 
@@ -21,21 +34,26 @@ namespace TPFinalC_Nivel3
         {
             try
             {
-                //devolver la raiz o ruta fisica de la carpeta de imagenes y guardar el archivo, agregando el ID del ususario..
                 ClienteNegocio negocio = new ClienteNegocio();
-                string ruta = Server.MapPath("./Images/");
                 Cliente user = (Cliente)Session["cliente"];
-                txtImagen.PostedFile.SaveAs(ruta + "perfil-" + user.Id + ".jpg");
+                if(txtImagen.PostedFile.FileName != "")
+                {
+                    string ruta = Server.MapPath("./Images/");
+                    txtImagen.PostedFile.SaveAs(ruta + "perfil-" + user.Id + ".jpg");
+                    user.ImagenPerfil = "perfil-" + user.Id + ".jpg";
+                }
 
-                //guardar los datos de la imagen para el perfil de la persona que corresponda...
-                user.ImagenPerfil = "perfil-" + user.Id + ".jpg";
+                user.Nombre = txtNombre.Text;
+                user.Apellido = txtApellido.Text;
                 negocio.actualizar(user);
 
-                //capturar todos los datos..
+                Image img = (Image)Master.FindControl("imgPerfil");
+                img.ImageUrl = "~/Images/" + user.ImagenPerfil;
             }
             catch (Exception ex)
             {
-                Session.Add("eeror", ex.ToString());
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
     }

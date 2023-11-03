@@ -27,13 +27,13 @@ namespace TPFinalC_Nivel3
                 if (negocio.Login(cliente))
                 {
                     Session.Add("cliente", cliente);
-                    Response.Redirect("MiPerfil.aspx", false);
+                    Response.Redirect("Mi Perfil.aspx", false);
 
                 }
                 else
                 {
                     Session.Add("error", "User o Password incorrectos");
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("Error.aspx", false);
                 }
             }
             catch (Exception ex)

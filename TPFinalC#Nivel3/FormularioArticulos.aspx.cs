@@ -49,7 +49,7 @@ namespace TPFinalC_Nivel3
                     txtNombre.Text = seleccionado.Nombre;
                     txtDescripcion.Text = seleccionado.Descripcion;
                     txtUrlImagen.Text = seleccionado.UrlImagen;
-                    txtPrecio.Text = seleccionado.Precio.ToString();
+                    txtPrecio.Text = seleccionado.Precio.ToString("$0,00");
                     ddlMarcas.SelectedValue = seleccionado.Marcas.Id.ToString();
                     ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
                     txtUrlImagen_TextChanged(sender, e);
@@ -59,8 +59,8 @@ namespace TPFinalC_Nivel3
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex);
-                throw; //dirigir a una pantalla de error
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
 
         }
@@ -96,8 +96,8 @@ namespace TPFinalC_Nivel3
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                throw;
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -126,7 +126,8 @@ namespace TPFinalC_Nivel3
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
     }

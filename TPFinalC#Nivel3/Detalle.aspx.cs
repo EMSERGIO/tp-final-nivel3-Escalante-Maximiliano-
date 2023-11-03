@@ -27,7 +27,7 @@ namespace TPFinalC_Nivel3
                 txtUrlImagen_TextChanged(sender, e);
                 txtNombre.Text = seleccionado.Nombre;
                 txtDescripcion.Text = seleccionado.Descripcion;
-                txtPrecio.Text = seleccionado.Precio.ToString();
+                txtPrecio.Text = seleccionado.Precio.ToString("$0,00");
 
             }
         }

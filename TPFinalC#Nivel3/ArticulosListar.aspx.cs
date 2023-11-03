@@ -83,8 +83,8 @@ namespace TPFinalC_Nivel3
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                throw;
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
         protected void btnLimpiarFiltro_Click(object sender, EventArgs e)

@@ -27,9 +27,9 @@ namespace TPFinalC_Nivel3
                 user.Email = txtEmail.Text;
                 user.Pass = txtPassword.Text;
                 user.Id = clienteNegocio.insertarNuevo(user);
-                Session.Add("musicoFans", user);//queda abierta la session al registrandonos...
+                Session.Add("cliente", user);
 
-                emailService.armarCorreo(user.Email, "Bienvenido Cloiente", "Hola te damos la bienvenida a la aplicacion...");
+                emailService.armarCorreo(user.Email, "Bienvenido Cliente", "Hola te damos la bienvenida a la aplicacion...");
                 emailService.enviarEmail();
                 Response.Redirect("Default.aspx", false);
             }
@@ -37,6 +37,7 @@ namespace TPFinalC_Nivel3
             {
 
                 Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
     }

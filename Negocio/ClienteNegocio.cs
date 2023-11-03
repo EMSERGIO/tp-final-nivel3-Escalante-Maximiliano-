@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
@@ -34,8 +35,10 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Update USERS set imagenPerfil = @imagen where ID = @id");
-                datos.setearParametro("@imagen", user.ImagenPerfil);
+                datos.setearConsulta("Update USERS set nombre = @nombre, apellido = @apellido, urlImagenPerfil = @imagen where ID = @id");
+                datos.setearParametro("@nombre", user.Nombre);
+                datos.setearParametro("@apellido", user.Apellido);
+                datos.setearParametro("@imagen", (object)user.ImagenPerfil ?? DBNull.Value);
                 datos.setearParametro("@id", user.Id);
                 datos.ejecutarAccion();
             }
@@ -54,7 +57,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Select id, email, pass, admin from USERS Where email = @email And pass = @pass");
+                datos.setearConsulta("Select id, email, pass, admin, nombre, apellido, urlImagenPerfil from USERS Where email = @email And pass = @pass");
                 datos.setearParametro("@email", cliente.Email);
                 datos.setearParametro("@pass", cliente.Pass);
                 datos.ejecutarLectura();
@@ -62,6 +65,13 @@ namespace Negocio
                 {
                     cliente.Id = (int)datos.Lector["id"];
                     cliente.Admin = (bool)datos.Lector["admin"];
+                    if (!(datos.Lector["nombre"] is DBNull))
+                        cliente.Nombre = (string)datos.Lector["nombre"];
+                    if (!(datos.Lector["apellido"] is DBNull))
+                        cliente.Apellido = (string)datos.Lector["apellido"];
+                    if (!(datos.Lector["urlImagenPerfil"] is DBNull))
+                        cliente.ImagenPerfil = (string)datos.Lector["urlImagenPerfil"];
+
                     return true;
                 }
                 return false;
@@ -73,6 +83,7 @@ namespace Negocio
                 throw ex;
             }
             finally { datos.cerrarConexion(); }
+
         }
     }
 }
