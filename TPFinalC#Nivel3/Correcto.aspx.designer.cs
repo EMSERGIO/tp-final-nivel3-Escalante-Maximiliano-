@@ -11,16 +11,16 @@ namespace TPFinalC_Nivel3
 {
 
 
-    public partial class Favoritos
+    public partial class Correcto
     {
 
         /// <summary>
-        /// Control repRepetidor2.
+        /// Control lblCorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repRepetidor2;
+        protected global::System.Web.UI.WebControls.Label lblCorrecto;
     }
 }

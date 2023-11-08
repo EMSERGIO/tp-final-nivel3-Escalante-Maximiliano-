@@ -16,9 +16,13 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+        <br />
         <div class="col">
             <div class="mb-3">
                 <asp:TextBox runat="server" ID="txtNombre" CssClass="text-center" />
+            </div>
+            <div class="mb-3">
+                <asp:TextBox runat="server" ID="txtCodigo" CssClass="text-center" />
             </div>
             <div class="mb-3">
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="text-center" />
@@ -27,7 +31,7 @@
                 <asp:TextBox runat="server" ID="txtDescripcion" class="" CssClass="text-center" />
             </div>
             <div class="mb-3">
-                <a href="/" class="btn btn-primary" >Volver</a>
+                <a href="/" class="btn btn-primary">Volver</a>
             </div>
         </div>
     </div>

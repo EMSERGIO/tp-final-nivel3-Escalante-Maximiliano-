@@ -9,14 +9,14 @@
             <h2>Login</h2>
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" />
+                <asp:TextBox runat="server" CssClass="form-control" REQUIRED ID="txtEmail" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" TextMode="Password" />
+                <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" REQUIRED TextMode="Password" />
             </div>
             <asp:Button Text="Ingresar" runat="server" CssClass=" btn btn-primary" ID="btnLogin" OnClick="btnLogin_Click" />
-            <a href="/" class="btn btn-outline-danger">Cancelar</a>
+            <a href="/" class="btn btn-outline-danger">Salir</a>
         </div>
     </div>
 

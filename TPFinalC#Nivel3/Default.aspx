@@ -6,6 +6,7 @@
 
     <h1>Hola</h1>
     <p>LLegaste a buscar tu articulo?</p>
+    <br />
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <asp:Repeater runat="server" ID="repRepetidor">
             <ItemTemplate>
@@ -22,7 +23,9 @@
                                 <div class="cols-md-3">
                                     <a href="Detalle.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">Ver Detalle</a>
                                     <asp:Button Text="Comprar" class="btn btn-danger" runat="server" />
-                                    <a href="Favoritos.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">❤️</a>
+                                    <%if (Negocio.Seguridad.sessionActiva(Session["cliente"])){%>
+                                            <a href="Favoritos.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">❤️</a>             
+                                    <% }%>
                                 </div>
                             </div>
                         </div>

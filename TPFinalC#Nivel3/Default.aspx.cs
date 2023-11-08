@@ -22,5 +22,13 @@ namespace TPFinalC_Nivel3
                 repRepetidor.DataBind();
             }
         }
+
+        //protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        //{
+        //    List<Articulos> lista = (List<Articulos>)Session["listaArticulos"];
+        //    List<Articulos> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+        //    repRepetidor.DataSource = listaFiltrada;
+        //    repRepetidor.DataBind();
+        //}
     }
 }

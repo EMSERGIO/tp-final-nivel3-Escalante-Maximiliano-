@@ -27,7 +27,14 @@ namespace TPFinalC_Nivel3
                 if (negocio.Login(cliente))
                 {
                     Session.Add("cliente", cliente);
-                    Response.Redirect("Mi Perfil.aspx", false);
+                    Response.Redirect("Default.aspx", false);
+                    //if (negocio.Login(cliente))
+                    //{
+                    //    Cliente user = (Cliente)Session["cliente"];
+                    //    lblUser.Text = user.Email;
+                    //    if (!string.IsNullOrEmpty(user.ImagenPerfil))
+                    //        imgPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                    //}
 
                 }
                 else

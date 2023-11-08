@@ -11,36 +11,65 @@ namespace TPFinalC_Nivel3
 {
     public partial class Favoritos : System.Web.UI.Page
     {
+        private int idArticulo;
+        private readonly int idUser;
+
         public List<Articulos> ListaArticulo { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-            if (Seguridad.sessionActiva(Session["cliente"]) && !IsPostBack)
+            try
             {
-                Cliente user = new Cliente();
-                FavoritoNegocio negocio = new FavoritoNegocio();
-                Articulos seleccionado = (negocio.listarFavorito(user.Id)[0]);
-                Favorito nuevo = new Favorito();
+                Cliente user = (Cliente)Session["cliente"];
+                string id = Request.QueryString["id"];
+                if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idArticulo))
+                {
+                    FavoritoNegocio negocio = new FavoritoNegocio();
+                    Favorito nuevo = new Favorito();
 
-                nuevo.IdUser = user.Id;
-                nuevo.IdArticulo = seleccionado.Id;
+                    nuevo.IdUser = user.Id;
+                    nuevo.IdArticulo = int.Parse(id);
 
-                dgvFavoritos.DataSource = negocio.listarFavorito(user.Id);
-                dgvFavoritos.DataBind();
+                    negocio.insertarNuevoFavorito(nuevo);
+                }
+                ListaArticulo = new List<Articulos>();
+
+                if (user != null)
+                {
+                    FavoritoNegocio negocioart = new FavoritoNegocio();
+                    List<int> idArticulosFavoritos = negocioart.listarFavUserId(user.Id);
+                    if (idArticulosFavoritos.Count > 0)
+                    {
+                        ArticulosNegocio art = new ArticulosNegocio();
+                        ListaArticulo = art.listarArtById(idArticulosFavoritos);
+                        repRepetidor2.DataSource = ListaArticulo;
+                        repRepetidor2.DataBind();
+                    }
 
 
+                }
             }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
+
         }
 
-        protected void dgvFavoritos_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnEliminarFav_Click(object sender, EventArgs e)
         {
+            Cliente user = (Cliente)Session["cliente"];
+            FavoritoNegocio negocio = new FavoritoNegocio();
 
-        }
+            int idArticulo = int.Parse(((Button)sender).CommandArgument);
+            int idUser = user.Id;
+            negocio.eliminarFavorito(idArticulo, idUser);
+            Session.Add("correcto", "Articulo favorito borrado con exito");
+            Response.Redirect("Correcto.aspx", false);
 
-        protected void dgvFavoritos_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            dgvFavoritos.PageIndex = e.NewPageIndex;
-            dgvFavoritos.DataBind();
+            Page_Load(sender, e);
+
         }
     }
 }

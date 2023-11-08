@@ -13,10 +13,6 @@ namespace TPFinalC_Nivel3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            txtNombre.Enabled = false;
-            txtDescripcion.Enabled = false;
-            txtPrecio.Enabled = false;
             string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
             if (id != "" && !IsPostBack)
             {
@@ -26,9 +22,13 @@ namespace TPFinalC_Nivel3
                 txtUrlImagen.Text = seleccionado.UrlImagen;
                 txtUrlImagen_TextChanged(sender, e);
                 txtNombre.Text = seleccionado.Nombre;
+                txtNombre.ReadOnly = true;
+                txtCodigo.Text = seleccionado.Codigo;
+                txtCodigo.ReadOnly = true;
                 txtDescripcion.Text = seleccionado.Descripcion;
+                txtDescripcion.ReadOnly = true;
                 txtPrecio.Text = seleccionado.Precio.ToString("$0,00");
-
+                txtPrecio.ReadOnly = true;
             }
         }
 

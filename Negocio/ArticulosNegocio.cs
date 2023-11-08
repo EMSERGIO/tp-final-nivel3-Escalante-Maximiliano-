@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dominio;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace Negocio
 {
@@ -294,5 +295,47 @@ namespace Negocio
         {
             throw new NotImplementedException();
         }
-    }    
+        public List<Articulos> listarArtById(List<int> listaArtId)
+        {
+            List<Articulos> lista = new List<Articulos>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion TipoMarca, " +
+                    "C.Descripcion TipoCategoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria " +
+                    "FROM ARTICULOS A, CATEGORIAS C, MARCAS M " +
+                    "WHERE C.Id = A.IdCategoria AND A.IdCategoria = M.Id AND A.Id IN (" + string.Join(",", listaArtId) + ")";
+                datos.setearConsulta(consulta);
+
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulos aux = new Articulos();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    if (!(datos.Lector["Descripcion"] is DBNull))
+                        aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Marcas = new Marcas();
+                    aux.Marcas.Id = (int)datos.Lector["IdMarca"];
+                    aux.Marcas.Descripcion = (string)datos.Lector["TipoMarca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)datos.Lector["TipoCategoria"];
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                    aux.Precio = (float)(decimal)datos.Lector["Precio"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+    }
 }
