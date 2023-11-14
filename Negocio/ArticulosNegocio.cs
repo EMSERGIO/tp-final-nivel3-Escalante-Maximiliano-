@@ -40,7 +40,7 @@ namespace Negocio
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Detalle"];
                     aux.UrlImagen = (string)lector["UrlImagen"];
-                    aux.Precio = (float)(Decimal)lector["Precio"];
+                    aux.Precio = (Decimal)lector["Precio"];
                     aux.Categoria = new Categoria();
                     aux.Categoria.Id = (int)lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
@@ -77,7 +77,7 @@ namespace Negocio
                     aux.Nombre = (string)datos.lector["Nombre"];
                     aux.Descripcion = (string)datos.lector["Detalle"];
                     aux.UrlImagen = (string)datos.lector["UrlImagen"];
-                    aux.Precio = (float)(Decimal)datos.lector["Precio"];
+                    aux.Precio = (Decimal)datos.lector["Precio"];
                     aux.Categoria = new Categoria();
                     aux.Categoria.Id = (int)datos.lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.lector["Categoria"];
@@ -93,7 +93,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -269,7 +268,7 @@ namespace Negocio
                     aux.Nombre = (string)datos.lector["Nombre"];
                     aux.Descripcion = (string)datos.lector["Detalle"];
                     aux.UrlImagen = (string)datos.lector["UrlImagen"];
-                    aux.Precio = (float)(Decimal)datos.lector["Precio"];
+                    aux.Precio = (Decimal)datos.lector["Precio"];
                     aux.Categoria = new Categoria();
                     aux.Categoria.Id = (int)datos.lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.lector["Categoria"];
@@ -324,7 +323,7 @@ namespace Negocio
                     aux.Categoria.Descripcion = (string)datos.Lector["TipoCategoria"];
                     if (!(datos.Lector["ImagenUrl"] is DBNull))
                         aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
-                    aux.Precio = (float)(decimal)datos.Lector["Precio"];
+                    aux.Precio = (Decimal)datos.Lector["Precio"];
 
                     lista.Add(aux);
                 }

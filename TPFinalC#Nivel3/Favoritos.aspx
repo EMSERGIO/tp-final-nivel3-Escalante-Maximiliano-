@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true"  CodeBehind="Favoritos.aspx.cs" Inherits="TPFinalC_Nivel3.Favoritos" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="TPFinalC_Nivel3.Favoritos" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h2>Productos Favoritos</h2>
+    <h2>❤️Productos Favoritos</h2>
     <br />
     <div class="row row-cols-1 row-cols-md-5 g-6">
         <asp:Repeater runat="server" ID="repRepetidor2">
@@ -20,8 +20,10 @@
                         <div class="card-footer">
                             <div class="text-center">
                                 <div class="cols-md-3">
-                                    <a href="Detalle.aspx?id=<%#Eval("Id")%>" cssclass="btn-active-box-shadow">Ver Detalle</a>
-                                    <asp:Button Text="Comprar" class="btn btn-danger" CssClass="btn-active-box-shadow" runat="server" />
+                                    <a href="Detalle.aspx?id=<%#Eval("Id")%>" class="btn btn-outline-info btn-sm">Ver Detalle</a>
+                                </div>
+                                <div class="cols-md-3">
+                                    <a href="Compra.aspx?id=<%#Eval("Id")%>" class="btn" data-bs-toggle="">&#x1F6D2;</a>
                                     <asp:Button ID="btnEliminarFav" CssClass="btn" runat="server" Text="❌"
                                         CommandName="ArticuloId" CommandArgument='<%#Eval("Id")%>' OnClick="btnEliminarFav_Click" />
                                 </div>

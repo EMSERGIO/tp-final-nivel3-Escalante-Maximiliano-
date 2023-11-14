@@ -23,11 +23,9 @@ namespace TPFinalC_Nivel3
                 txtUrlImagen_TextChanged(sender, e);
                 txtNombre.Text = seleccionado.Nombre;
                 txtNombre.ReadOnly = true;
-                txtCodigo.Text = seleccionado.Codigo;
-                txtCodigo.ReadOnly = true;
                 txtDescripcion.Text = seleccionado.Descripcion;
                 txtDescripcion.ReadOnly = true;
-                txtPrecio.Text = seleccionado.Precio.ToString("$0,00");
+                txtPrecio.Text = seleccionado.Precio.ToString("$0.00");
                 txtPrecio.ReadOnly = true;
             }
         }

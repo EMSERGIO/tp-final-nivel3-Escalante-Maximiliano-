@@ -20,6 +20,10 @@ namespace TPFinalC_Nivel3
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 Cliente user = new Cliente();
                 ClienteNegocio clienteNegocio = new ClienteNegocio();
                 EmailService emailService = new EmailService();

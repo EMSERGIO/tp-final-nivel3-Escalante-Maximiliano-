@@ -22,24 +22,26 @@ namespace TPFinalC_Nivel3
             ClienteNegocio negocio = new ClienteNegocio();
             try
             {
-                cliente.Email = txtEmail.Text;
-                cliente.Pass = txtPassword.Text;    
-                if (negocio.Login(cliente))
+                if (txtEmail.Text != "" && txtPassword.Text != "")
                 {
-                    Session.Add("cliente", cliente);
-                    Response.Redirect("Default.aspx", false);
-                    //if (negocio.Login(cliente))
-                    //{
-                    //    Cliente user = (Cliente)Session["cliente"];
-                    //    lblUser.Text = user.Email;
-                    //    if (!string.IsNullOrEmpty(user.ImagenPerfil))
-                    //        imgPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
-                    //}
 
+                    cliente.Email = txtEmail.Text;
+                    cliente.Pass = txtPassword.Text;
+                    if (negocio.Login(cliente))
+                    {
+                        Session.Add("cliente", cliente);
+                        Response.Redirect("Default.aspx", false);
+
+                    }
+                    else
+                    {
+                        Session.Add("error", "User o Password incorrectos");
+                        Response.Redirect("Error.aspx", false);
+                    }
                 }
                 else
                 {
-                    Session.Add("error", "User o Password incorrectos");
+                    Session.Add("error", "Debe completar todos los campos.");
                     Response.Redirect("Error.aspx", false);
                 }
             }
@@ -48,6 +50,15 @@ namespace TPFinalC_Nivel3
                 Session.Add("error", ex.ToString());
                 Response.Redirect("Error.aspx");
             }
+
+        }
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+
+
+            Session.Add("error", exc.ToString());
+            Server.Transfer("Error.aspx");
         }
     }
 }

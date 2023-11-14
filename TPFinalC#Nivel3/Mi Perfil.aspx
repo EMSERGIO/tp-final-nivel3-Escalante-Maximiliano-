@@ -1,5 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Mi Perfil.aspx.cs" Inherits="TPFinalC_Nivel3.Mi_Perfil" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        function validar() {
+            const txtNombre = document.getElementById("txtNombre");
+            const txtApellido = document.getElementById("txtApellido");
+            if (txtNombre.value == "") {
+                txtNombre.classList.add("is-invalid");
+                txtNombre.classList.remove("is-valid");
+                txtApellido.classList.add("is-valid");
+                return false;
+            }
+            txtNombre.classList.remove("is-invalid");
+            txtNombre.classList.add("is-valid");
+            return true;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -8,15 +29,16 @@
         <div class="col-4">
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" />
+                <asp:TextBox runat="server" CssClass="form-control"  ID="txtEmail" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" />
+                <asp:TextBox runat="server" CssClass="form-control" ClientIDMode="Static" ID="txtNombre" />
+
             </div>
             <div class="mb-3">
                 <label class="form-label">Apellido</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtApellido" />
+                <asp:TextBox runat="server" CssClass="form-control" ClientIDMode="Static" ID="txtApellido" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Imagen Perfil</label>
@@ -26,14 +48,14 @@
 
         <div class="col-4">
 
-            <asp:Image ImageUrl="https://img2.freepng.es/20180603/jx/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1b19d70.1261504615280626897275.jpg"
-                runat="server" ID="imgNuevoPerfil" cssclass="img-fluid mb-3"/>
+            <asp:Image ID="imgNuevoPerfil" ImageUrl="https://img2.freepng.es/20180603/jx/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1b19d70.1261504615280626897275.jpg"
+                runat="server"  cssclass="img-fluid mb-3"/>
         </div>
     </div>
 
     <div class="row">
         <div class="col-mb-4">
-            <asp:Button Text="Guardar" CssClass="btn btn-primary" ID="btnGuardar" OnClick="btnGuardar_Click" runat="server" />
+            <asp:Button Text="Guardar" CssClass="btn btn-primary" ID="btnGuardar" OnClientClick="return validar()" OnClick="btnGuardar_Click" runat="server" />
             <a href="/" class="btn btn-outline-danger" >Regresar</a>
         </div>
     </div

@@ -4,37 +4,33 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container text-center">
-        <div class="col">
+    <div class="row g-0 bg-body-secondary position-relative">
+        <div class="col-md-6 mb-md-0 p-md-4">
             <asp:ScriptManager runat="server" />
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-                    <asp:TextBox runat="server" ID="txtUrlImagen" Visible="false" CssClass="form-control"
+                    <asp:TextBox runat="server" ID="txtUrlImagen" Visible="false"
                         AutoPostBack="true" OnTextChanged="txtUrlImagen_TextChanged" />
                     <asp:Image ImageUrl="http://img2.wikia.nocookie.net/__cb20140518072131/towerofsaviors/images/4/47/Placeholder.png"
-                        runat="server" ID="imgArticulos" Width="30%" />
+                        runat="server" ID="imgArticulos" class="img-fluid rounded-start" />
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <br />
-        <div class="col">
-            <div class="mb-3">
-                <asp:TextBox runat="server" ID="txtNombre" CssClass="text-center" />
+        <div class="col-md-6 p-4 ps-md-0">
+            <div class="md-6">
+                <asp:TextBox runat="server" ID="txtNombre" class="btn" Columns="27" Font-Size="XX-Large" Font-Italic="true" />
             </div>
-            <div class="mb-3">
-                <asp:TextBox runat="server" ID="txtCodigo" CssClass="text-center" />
+            <br />
+            <div class="md-6">
+                <asp:TextBox runat="server" ID="txtDescripcion" Columns="58" Rows="4" TextMode="MultiLine" class="btn" />
+                <asp:TextBox runat="server" ID="txtPrecio" Columns="25" class="btn" Font-Size="XX-Large" />
             </div>
-            <div class="mb-3">
-                <asp:TextBox runat="server" ID="txtPrecio" CssClass="text-center" />
-            </div>
-            <div class="mb-3">
-                <asp:TextBox runat="server" ID="txtDescripcion" class="" CssClass="text-center" />
-            </div>
-            <div class="mb-3">
-                <a href="/" class="btn btn-primary">Volver</a>
+            <br />
+            <div class="row g-0 bg-body-secondary position-relative">
+                <a href="/" class="btn btn-outline-info btn-sm">↩️ Volver al Home</a>
+                <a href="Compra.aspx" class="btn btn-outline-danger btn-sm">&#x1F6D2; Comprar</a>
             </div>
         </div>
     </div>
-
 
 </asp:Content>

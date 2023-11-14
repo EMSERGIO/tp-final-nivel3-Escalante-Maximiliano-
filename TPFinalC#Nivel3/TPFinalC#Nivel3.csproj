@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArticulosListar.aspx" />
+    <Content Include="Compra.aspx" />
     <Content Include="Correcto.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
@@ -87,6 +88,13 @@
     </Compile>
     <Compile Include="ArticulosListar.aspx.designer.cs">
       <DependentUpon>ArticulosListar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compra.aspx.cs">
+      <DependentUpon>Compra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compra.aspx.designer.cs">
+      <DependentUpon>Compra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Correcto.aspx.cs">
       <DependentUpon>Correcto.aspx</DependentUpon>

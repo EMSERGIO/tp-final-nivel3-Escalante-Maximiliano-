@@ -25,7 +25,6 @@
 <body style="color: navy">
     <form id="form1" runat="server">
         <div>
-
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Electro Max</a>
@@ -38,15 +37,10 @@
                             <%if (Negocio.Seguridad.esAdmin(Session["cliente"]))
                                 {%>
                             <a class="nav-link" href="ArticulosListar.aspx">Listado de Articulos</a>
-                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
-                            <%
-                                }
-                                else if (Negocio.Seguridad.sessionActiva(Session["cliente"]))
-                                {%>
-                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
-
                             <%} %>
+                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
                             <a class="nav-link" href="Mi Perfil.aspx">Mi Perfil</a>
+                            <a class="nav-link" href="Compra.aspx">&#x1F6D2;</a>
                         </div>
                     </div>
                 </div>
@@ -54,12 +48,11 @@
                     <%if (!Negocio.Seguridad.sessionActiva(Session["cliente"]))
                         {%>
                     <a href="Login.aspx" class="btn btn-success me-2">Login</a>
-                    <a href="Registro.aspx" class="btn btn-outline-primary">Registrarse</a>
+                    <a href="Registro.aspx" class="btn btn-outline-primary me-2">Registrarse</a>
                     <%
                         }
                         else
-                        {
-                    %>
+                        {%>
                     <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" />
                     <asp:Label ID="lblUser" Text="user" CssClass="text-light m-auto me-2" runat="server" />
                     <%} %>

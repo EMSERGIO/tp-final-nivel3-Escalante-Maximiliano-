@@ -21,10 +21,11 @@
                         <div class="card-footer">
                             <div class="text-center">
                                 <div class="cols-md-3">
-                                    <a href="Detalle.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">Ver Detalle</a>
-                                    <asp:Button Text="Comprar" class="btn btn-danger" runat="server" />
-                                    <%if (Negocio.Seguridad.sessionActiva(Session["cliente"])){%>
-                                            <a href="Favoritos.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">❤️</a>             
+                                    <a href="Detalle.aspx?id=<%#Eval("Id")%>" class="btn btn-outline-info">Ver Detalle</a>
+                                    <a href="Compra.aspx?id=<%#Eval("Id")%>" class="btn" data-bs-toggle="">&#x1F6D2;</a>
+                                    <%if (Negocio.Seguridad.sessionActiva(Session["cliente"]))
+                                        {%>
+                                    <a href="Favoritos.aspx?id=<%#Eval("Id")%>" class="btn" data-bs-toggle="">❤️</a>
                                     <% }%>
                                 </div>
                             </div>

@@ -49,7 +49,7 @@ namespace TPFinalC_Nivel3
                     txtNombre.Text = seleccionado.Nombre;
                     txtDescripcion.Text = seleccionado.Descripcion;
                     txtUrlImagen.Text = seleccionado.UrlImagen;
-                    txtPrecio.Text = seleccionado.Precio.ToString("$0,00");
+                    txtPrecio.Text = seleccionado.Precio.ToString();
                     ddlMarcas.SelectedValue = seleccionado.Marcas.Id.ToString();
                     ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
                     txtUrlImagen_TextChanged(sender, e);
@@ -76,7 +76,7 @@ namespace TPFinalC_Nivel3
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
                 nuevo.UrlImagen = txtUrlImagen.Text;
-                nuevo.Precio = int.Parse(txtPrecio.Text.ToString());
+                nuevo.Precio = Decimal.Parse(txtPrecio.Text);
 
                 nuevo.Marcas = new Marcas();
                 nuevo.Marcas.Id = int.Parse(ddlMarcas.SelectedValue);
@@ -119,7 +119,7 @@ namespace TPFinalC_Nivel3
                 {
                     ArticulosNegocio negocio = new ArticulosNegocio();
                     negocio.eliminar(int.Parse(txtId.Text));
-                    Response.Redirect("ArticulosListar.aspx");
+                    Response.Redirect("ArticulosListar.aspx", false);
 
                 }
 

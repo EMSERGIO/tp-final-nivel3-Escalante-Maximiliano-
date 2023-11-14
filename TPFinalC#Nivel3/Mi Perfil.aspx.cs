@@ -14,18 +14,26 @@ namespace TPFinalC_Nivel3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Seguridad.sessionActiva(Session["cliente"]))
+                if (!IsPostBack)
                 {
-                    Cliente user = (Cliente)Session["cliente"];
-                    txtEmail.Text = user.Email;
-                    txtEmail.Enabled = false;
-                    txtApellido.Text = user.Apellido;
-                    txtNombre.Text = user.Nombre;
-                    if(!string.IsNullOrEmpty(user.ImagenPerfil))
-                        imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                    if (Seguridad.sessionActiva(Session["cliente"]))
+                    {
+                        Cliente user = (Cliente)Session["cliente"];
+                        txtEmail.Text = user.Email;
+                        txtEmail.Enabled = false;
+                        txtApellido.Text = user.Apellido;
+                        txtNombre.Text = user.Nombre;
+                        if (!string.IsNullOrEmpty(user.ImagenPerfil))
+                            imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
 
         }
@@ -49,6 +57,9 @@ namespace TPFinalC_Nivel3
 
                 Image img = (Image)Master.FindControl("imgPerfil");
                 img.ImageUrl = "~/Images/" + user.ImagenPerfil;
+
+                Session.Add("correcto", "guandado con exito.");
+                Response.Redirect("Correcto.aspx", false);
             }
             catch (Exception ex)
             {

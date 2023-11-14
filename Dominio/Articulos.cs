@@ -17,7 +17,7 @@ namespace Dominio
         [DisplayName("Descripción")]
         public string Descripcion { get; set; }
         public string UrlImagen { get; set; }
-        public float Precio { get; set; }
+        public Decimal Precio { get; set; }
 
         [DisplayName("Categoría")]
         public Categoria Categoria { get; set; }
