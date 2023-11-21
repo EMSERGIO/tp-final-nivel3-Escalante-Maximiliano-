@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Compra.aspx.cs" Inherits="TPFinalC_Nivel3.Compra" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -6,7 +7,7 @@
     <h2>LLevate tu producto al mejor precio...</h2>
     <p>Pronto estara habilitada esta session para ti...</p>
 
-<%--        <asp:ScriptManager runat="server" />
+    <asp:ScriptManager runat="server" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:GridView ID="dgvCompra" runat="server" DataKeyNames="Id"
@@ -22,6 +23,6 @@
                 </Columns>
             </asp:GridView>
         </ContentTemplate>
-    </asp:UpdatePanel>--%>
+    </asp:UpdatePanel>
 
 </asp:Content>

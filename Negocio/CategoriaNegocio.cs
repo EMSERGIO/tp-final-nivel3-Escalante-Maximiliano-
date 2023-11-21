@@ -39,5 +39,31 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public List<int> listarCategoriaId(int idCategoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<int> lista = new List<int>();
+
+            try
+            {
+                datos.setearConsulta("select Id from CATEGORIAS");
+                datos.setearParametro("@Id", idCategoria);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    int aux = (int)datos.Lector["Id"];
+                    lista.Add(aux);
+                }
+
+                datos.cerrarConexion();
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
     }
 }

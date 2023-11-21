@@ -25,7 +25,7 @@ namespace TPFinalC_Nivel3
                 txtNombre.ReadOnly = true;
                 txtDescripcion.Text = seleccionado.Descripcion;
                 txtDescripcion.ReadOnly = true;
-                txtPrecio.Text = seleccionado.Precio.ToString("$0.00");
+                txtPrecio.Text = seleccionado.Precio.ToString("$0.000");
                 txtPrecio.ReadOnly = true;
             }
         }

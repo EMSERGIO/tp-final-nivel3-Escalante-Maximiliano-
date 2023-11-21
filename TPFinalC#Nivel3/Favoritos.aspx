@@ -6,23 +6,26 @@
 
     <h2>❤️Productos Favoritos</h2>
     <br />
-    <div class="row row-cols-1 row-cols-md-5 g-6">
+    <div class="row row-cols-1 row-cols-md-5 g-2">
         <asp:Repeater runat="server" ID="repRepetidor2">
             <ItemTemplate>
                 <div class="col">
                     <div class="card h-100">
                         <img src="<%#Eval("UrlImagen")%>" class="card-img-top" alt="...">
-                        <div class="text-center">
+
+                        <br />
+                        <div class="card-body">
+                            <h6 class="card-text"><%#Eval("Marcas")%></h6>
                             <h5 class="card-title"><%#Eval("Nombre")%></h5>
                             <p class="card-text"><%#Eval("Descripcion")%></p>
-                            <small class="text-body-secondary">Precio $<%#Eval("Precio")%></small>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-text">
                             <div class="text-center">
-                                <div class="cols-md-3">
-                                    <a href="Detalle.aspx?id=<%#Eval("Id")%>" class="btn btn-outline-info btn-sm">Ver Detalle</a>
-                                </div>
-                                <div class="cols-md-3">
+                                <h3 class="text-body-secondary">$<%#Eval("Precio")%></h3>
+                            </div>
+                            <div class="text-center">
+                                <a href="Detalle.aspx?id=<%#Eval("Id")%>" class="badge text-bg-success">Ver Detalle</a>
+                                <div class="row-cols-3">
                                     <a href="Compra.aspx?id=<%#Eval("Id")%>" class="btn" data-bs-toggle="">&#x1F6D2;</a>
                                     <asp:Button ID="btnEliminarFav" CssClass="btn" runat="server" Text="❌"
                                         CommandName="ArticuloId" CommandArgument='<%#Eval("Id")%>' OnClick="btnEliminarFav_Click" />
