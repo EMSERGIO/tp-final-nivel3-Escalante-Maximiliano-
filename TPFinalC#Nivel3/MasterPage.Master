@@ -11,18 +11,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!--<style>
+<%--    <style>
         body {
-            background-image: url("https://okhosting.com/resources/uploads/2016/01/el-comercio-electronico.png");
+            background-image: url("https://tse4.mm.bing.net/th?id=OIP.hjpYnPGsviTVaTZxyVVwdAHaEK&pid=Api&P=0&h=180");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
         }
-    </style>-->
+    </style>--%>
 
 </head>
-<body style="color: navy">
+<body >
     <form id="form1" runat="server">
         <div>
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -47,8 +47,8 @@
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <%if (!Negocio.Seguridad.sessionActiva(Session["cliente"]))
                         {%>
-                    <a href="Login.aspx" class="btn btn-success btn-sm">Login</a>
-                    <a href="Registro.aspx" class="btn btn-outline-primary btn-sm">Registrarse</a>
+                    <a href="Login.aspx" class="btn btn-success btn-sm fw-semibold">Login</a>
+                    <a href="Registro.aspx" class="btn btn-outline-primary btn-sm fw-semibold">Registrarse</a>
                     <%
                         }
                         else

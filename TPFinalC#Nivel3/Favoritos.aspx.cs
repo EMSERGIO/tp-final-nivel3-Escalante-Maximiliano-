@@ -11,7 +11,6 @@ namespace TPFinalC_Nivel3
 {
     public partial class Favoritos : System.Web.UI.Page
     {
-        private readonly int idUser;
 
         public List<Articulos> ListaArticulo { get; set; }
 
