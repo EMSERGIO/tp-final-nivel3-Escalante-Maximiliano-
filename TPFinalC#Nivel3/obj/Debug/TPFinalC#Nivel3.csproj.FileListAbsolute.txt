@@ -55,6 +55,7 @@ C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3Esc
 C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\bin\Negocio.dll
 C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\bin\Dominio.pdb
 C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\bin\Negocio.pdb
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\bin\Negocio.dll.config
 C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\obj\Debug\TPFinalC#Nivel3.csproj.AssemblyReference.cache
 C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\obj\Debug\TPFinalC#Nivel3.csproj.CoreCompileInputs.cache

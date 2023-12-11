@@ -1,0 +1,6 @@
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\Dominio\bin\Release\Dominio.dll
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\Dominio\bin\Release\Dominio.pdb
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\Dominio\obj\Release\Dominio.csproj.AssemblyReference.cache
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\Dominio\obj\Release\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\Dominio\obj\Release\Dominio.dll
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\Dominio\obj\Release\Dominio.pdb

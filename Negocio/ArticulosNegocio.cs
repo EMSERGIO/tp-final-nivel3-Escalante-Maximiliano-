@@ -7,6 +7,7 @@ using Dominio;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.Configuration;
 
 namespace Negocio
 {
@@ -21,6 +22,7 @@ namespace Negocio
 
             try
             {
+                //conexion.ConnectionString = ConfigurationManager.AppSettings["cadenaConexion"];
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "Select Codigo, Nombre, A.Descripcion as Detalle, ImagenUrl as UrlImagen, Precio , C.Descripcion as Categoria, M.Descripcion as Marcas, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A,CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca ";

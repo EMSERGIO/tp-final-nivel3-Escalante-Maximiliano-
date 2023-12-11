@@ -1,0 +1,2 @@
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\obj\Release\TPFinalC#Nivel3.csproj.AssemblyReference.cache
+C:\Users\sergi\OneDrive\Escritorio\ESTUDIO\CURSOS MAXI PROGRAMA\TPFinalNivel3EscalanteMaximiliano\TPFinalC#Nivel3\obj\Release\TPFinalC#Nivel3.csproj.CoreCompileInputs.cache

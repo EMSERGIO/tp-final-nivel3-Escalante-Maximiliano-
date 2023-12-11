@@ -58,8 +58,7 @@ namespace TPFinalC_Nivel3
                 Image img = (Image)Master.FindControl("imgPerfil");
                 img.ImageUrl = "~/Images/" + user.ImagenPerfil;
 
-                Session.Add("correcto", "guandado con exito.");
-                Response.Redirect("Correcto.aspx", false);
+                Response.Redirect("Mi Perfil.aspx", false);
             }
             catch (Exception ex)
             {
